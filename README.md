@@ -27,9 +27,32 @@ With the global shift toward sustainable mobility, electric vehicles (EVs) have 
 #### 1) What are the Key Performance Indicators obtained from the Dataset?
 
 . Most Sold EV Company (by Vehicle Count)
-
-```SELECT 
+```
+SELECT 
 Make, COUNT(Vehicle_ID) AS total_vehicles 
 FROM rizdb.electric_vehicle_analytics 
 GROUP BY Make 
 ORDER BY total_vehicles DESC;
+
+![image alt](<img width="375" height="307" alt="image" src="https://github.com/user-attachments/assets/c78588fe-546d-4f34-9d88-0c67fc368ab8" />)
+
+
+
+. Average Battery Health (%)
+```
+SELECT Make, ROUND(AVG(`Battery_Health_%` ), 2) AS avg_battery_health 
+FROM rizdb.electric_vehicle_analytics 
+GROUP BY Make 
+ORDER BY avg_battery_health DESC;
+
+
+.Average Charging Time (hours)
+```
+SELECT Make, ROUND(AVG(Charging_Time_hr), 5) AS avg_charging_time_hr 
+FROM rizdb.electric_vehicle_analytics 
+GROUP BY Make 
+ORDER BY avg_charging_time_hr ASC;
+
+
+
+
