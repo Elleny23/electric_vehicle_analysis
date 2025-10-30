@@ -34,13 +34,13 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY total_vehicles DESC;
 ```
-
+![image alt]()
 
 
 
 Average Battery Health (%)
 ```
-SELECT Make, ROUND(AVG(`Battery_Health_%` ), 2) AS avg_battery_health 
+SELECT Make, ROUND(AVG(`Battery_Health_%`),2) AS avg_battery_health 
 FROM rizdb.electric_vehicle_analytics 
 GROUP BY Make 
 ORDER BY avg_battery_health DESC;
