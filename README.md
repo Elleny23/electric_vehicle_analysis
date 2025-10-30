@@ -1,4 +1,4 @@
-# Tools used : MySQL Server,Power BI
+### Tools used : MySQL Server,Power BI
 
 ## Description:
 
@@ -14,5 +14,5 @@
 
 ## Questions Answered from the Dataset
 
-# 1) What are the Key Performance Indicators obtained from the Dataset?
+### 1) What are the Key Performance Indicators obtained from the Dataset?
 
