@@ -1,6 +1,6 @@
 # Electric Vehicle Performance Analysis 
 
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/GNWm6AT4CMJn776hZJZETk9ugA99DI3OE9oB2VVy.jpg)
 
 ### Tools used : MySQL Server,Power BI
 
