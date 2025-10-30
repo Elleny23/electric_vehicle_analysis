@@ -35,7 +35,8 @@ GROUP BY Make
 ORDER BY total_vehicles DESC;
 ```
 
-![image alt](https://github.com/user-attachments/assets/c78588fe-546d-4f34-9d88-0c67fc368ab8)
+![image alt](<img width="375" height="307" alt="image" src="https://github.com/user-attachments/assets/68fde1c0-ba51-481b-ab0e-c5ea520a011c" />
+)
 
 
 
