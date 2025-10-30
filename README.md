@@ -1,6 +1,6 @@
 # Electric Vehicle Performance Analysis 
 
-## ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/GNWm6AT4CMJn776hZJZETk9ugA99DI3OE9oB2VVy.jpg)
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/GNWm6AT4CMJn776hZJZETk9ugA99DI3OE9oB2VVy.jpg)
 
 ### Tools used : MySQL Server,Power BI
 
@@ -16,8 +16,9 @@ With the global shift toward sustainable mobility, electric vehicles (EVs) have 
 ## Table of contents
 - [Dataset used](#dataset)
 - [SQL Analysis_code](#sql_analysis_code)
-- [Power BI Dashboard](#power_bi_dashboard)
+- [Power BI Dashboard-click to interact](#power_bi_dashboard)
 - [README.md](#readme.md)
+- [PPT](#ppt_file)
   
 
 ## Execution
@@ -25,3 +26,10 @@ With the global shift toward sustainable mobility, electric vehicles (EVs) have 
 
 #### 1) What are the Key Performance Indicators obtained from the Dataset?
 
+. Most Sold EV Company (by Vehicle Count)
+
+```SELECT 
+Make, COUNT(Vehicle_ID) AS total_vehicles 
+FROM rizdb.electric_vehicle_analytics 
+GROUP BY Make 
+ORDER BY total_vehicles DESC;
