@@ -68,7 +68,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY total_co2_saved_tons DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture4.png)
+
 In terms of environmental impact, Volkswagen leads by saving approximately 4,930 tons of CO₂, followed by BMW (4,741 tons) and Hyundai (4,696 tons). These savings reflect the combined effect of higher vehicle efficiency, sales volume, and distance covered by EVs.
 
 
@@ -82,7 +83,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY make,model 
 ORDER BY battery_efficiency_km_per_kwh DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture5.png)
 
 The Hyundai Kona Electric ranks first with a battery efficiency of 5.05 km/kWh, making it the most energy-efficient model in this dataset. Other top performers include Audi e-tron (5.04 km/kWh) and Ford Mustang Mach-E (5.03 km/kWh). Tesla’s models maintain consistent performance around 4.9–4.95 km/kWh, showcasing balanced power and range optimization.
 
@@ -98,7 +99,7 @@ FROM cost_normalized
 GROUP BY Region
 ORDER BY AVG_cost_per_1000km ASC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture6.png)
 
 This query compares the average cost of operating EVs per 1,000 km across different regions.
 Australia shows the lowest cost (≈3.28 units), suggesting cheaper electricity rates or higher charging efficiency.
@@ -116,7 +117,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY cycle_bin
 ORDER BY cycle_bin;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture7.png)
 
 This output analyzes battery degradation trends across different vehicle types over charge cycles.
 Up to 700 cycles, battery health remains stable (~85–86%), after which a gradual decline is visible.
@@ -137,7 +138,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make, Model
 ORDER BY avg_resale_value_usd DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture8.png)
 
 This table identifies models with high resale value and battery retention.
 BMW i4 ($23,530) has the highest resale value, supported by strong battery performance (85.4%).
@@ -154,7 +155,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY make 
 ORDER BY Co2_savings_per_1000_maintenance DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture9.png)
 
 This analysis links maintenance efficiency with environmental impact.
 Hyundai leads with 21.45 tons of CO₂ saved, followed by Nissan (20.11) and Volkswagen (19.79).
@@ -177,7 +178,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY vehicle_type
 ORDER BY speed_energy_corr DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture10.png)
 
 This output measures how vehicle speed correlates with energy consumption.
 Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally.
@@ -197,7 +198,7 @@ GROUP BY make, model
 ORDER BY charging_performace ASC
 LIMIT 10;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture11.png)
 
 This analysis identifies models with the most efficient charging-to-range ratio.
 Tesla Model Y (0.01265) and Model 3 (0.01401) lead the ranking, reflecting Tesla’s superior fast-charging technology.
@@ -219,7 +220,7 @@ vehicle_type,cost_per_maxspeed, cost_per_acceleration
 FROM vehicle_type
 ORDER BY cost_per_maxspeed DESC, cost_per_acceleration DESC; 
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture12.png)
 
 This query evaluates performance cost-efficiency among vehicle categories.
 Sedans provide the best value, with the lowest cost per max speed (7.95) and acceleration (239.78).
@@ -241,7 +242,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY region,reg_temperature
 ORDER BY region, reg_temperature;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture13.png)
 
 This output examines how environmental temperature affects EV battery range in different regions.
 North America records the highest average range (~392 km) in cold climates, likely due to better thermal management systems.
