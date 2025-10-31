@@ -36,7 +36,7 @@ ORDER BY total_vehicles DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture1.png)
 
-This table shows the total number of EVs sold by each manufacturer. Ford leads with 323 vehicles, followed closely by BMW (311) and Volkswagen (308). This suggests strong brand penetration and consumer trust in Ford’s EV lineup. High sales volumes also reflect broader dealership networks, competitive pricing, and effective marketing strategies.
+This shows the total number of EVs sold by each manufacturer. Ford leads with 323 vehicles, followed closely by BMW (311) and Volkswagen (308). This suggests strong brand penetration and consumer trust in Ford’s EV lineup. High sales volumes also reflect broader dealership networks, competitive pricing, and effective marketing strategies.
 
 Average Battery Health (%)
 ```
@@ -101,10 +101,7 @@ ORDER BY AVG_cost_per_1000km ASC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture6.png)
 
-This query compares the average cost of operating EVs per 1,000 km across different regions.
-Australia shows the lowest cost (≈3.28 units), suggesting cheaper electricity rates or higher charging efficiency.
-Europe (3.36) and Asia (3.42) record slightly higher costs, possibly due to differences in grid energy pricing and charging infrastructure.
-EV operating costs remain fairly consistent globally, but regions with renewable power and better infrastructure, like Australia, achieve lower per-kilometer costs.
+This table compares the average monthly charging cost of operating EVs per 1,000 km across different regions. Australia shows the lowest cost (3.28 units), suggesting cheaper electricity rates or higher charging efficiency. Europe (3.36) and Asia (3.42) record slightly higher costs, possibly due to differences in grid energy pricing and charging infrastructure. EV operating costs remain fairly consistent globally, but regions with renewable power and better infrastructure, like Australia, achieve lower per kilometer costs.
 
 #### 4) How does average battery health (%) change with number of charge cycles across usage types (Personal vs. Commercial)?
 ```
@@ -119,12 +116,7 @@ ORDER BY cycle_bin;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture7.png)
 
-This output analyzes battery degradation trends across different vehicle types over charge cycles.
-Up to 700 cycles, battery health remains stable (~85–86%), after which a gradual decline is visible.
-Commercial EVs show slightly higher degradation due to more intensive usage.
-Personal EVs maintain steadier performance, while fleet batteries exhibit wider fluctuations from shared or long-duration charging.
-Analyst Note:
-Battery health declines moderately after 1,000 cycles, highlighting the need for balanced charging practices and efficient energy management systems.
+This output analyzes battery degradation trends across different vehicle types over charge cycles. Up to 700 cycles, battery health remains stable (85–86%), after which a gradual decline is visible. Commercial EVs show slightly higher degradation due to more intensive usage. Personal EVs maintain steadier performance, while fleet batteries exhibit wider fluctuations from shared or long duration charging. Battery health declines moderately after 1,000 cycles, highlighting the need for balanced charging practices and efficient energy management systems.
 
 #### 5) Rank vehicles by resale value relative to total mileage and battery health. Which usage factors explain the highest resale value?
 ```
@@ -140,12 +132,7 @@ ORDER BY avg_resale_value_usd DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture8.png)
 
-This table identifies models with high resale value and battery retention.
-BMW i4 ($23,530) has the highest resale value, supported by strong battery performance (85.4%).
-Tesla Model S offers balanced results—slightly lower resale value but excellent battery health (85.9%).
-Hyundai Ioniq 5 and Kia Niro EV demonstrate reliability with good mileage and stable battery metrics.
-Analyst Note:
-Premium EVs like BMW and Tesla maintain high resale potential due to superior battery technology and consumer trust in brand performance.
+This table identifies models with high resale value and battery retention. BMW i4 ($23,530) has the highest resale value, supported by strong battery performance (85.4%). Audi ($23,095) and Mercedes ($23,016) have higher resale value but slighty lower battery performance on the other hand Tesla Model S offers slightly lower resale value ($23,098) but excellent battery health (85.9%). Hyundai Ioniq 5 and Kia Niro EV demonstrate reliability with good mileage and stable battery metrics. However premium EVs like BMW,Audi, Mercedes and Tesla maintain high resale retention due to improved battery technology and consumer trust in brand performance.
 
 #### 6) Which manufacturer provides the highest CO₂ savings per $1,000 spent on maintenance?
 ```
