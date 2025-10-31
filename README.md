@@ -45,6 +45,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY avg_battery_health DESC;
 ```
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture2.png)
 Tesla ranks highest with an average battery health of 85.95%, outperforming all other brands. Ford (85.3%) and BMW (85.27%) follow closely, indicating competitive battery management systems. This metric represents how well EV batteries retain their capacity over time, a key indicator of efficiency and reliability.
 
 
@@ -55,6 +56,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY avg_charging_time_hr ASC;
 ```
+![image alt]()
 Tesla again leads with the fastest charging time (1.09 hours), showing high efficiency in energy transfer and optimized charging infrastructure. Nissan (1.15 hrs) and Audi (1.16 hrs) also perform well, while Kia (1.30 hrs) ranks lowest. Lower charging times improve user convenience and support wider EV adoption.
 
 Total CO₂ Saved (tons)
@@ -64,6 +66,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY total_co2_saved_tons DESC;
 ```
+![image alt]()
 In terms of environmental impact, Volkswagen leads by saving approximately 4,930 tons of CO₂, followed by BMW (4,741 tons) and Hyundai (4,696 tons). These savings reflect the combined effect of higher vehicle efficiency, sales volume, and distance covered by EVs.
 
 
@@ -77,6 +80,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY make,model 
 ORDER BY battery_efficiency_km_per_kwh DESC;
 ```
+![image alt]()
+
 The Hyundai Kona Electric ranks first with a battery efficiency of 5.05 km/kWh, making it the most energy-efficient model in this dataset. Other top performers include Audi e-tron (5.04 km/kWh) and Ford Mustang Mach-E (5.03 km/kWh). Tesla’s models maintain consistent performance around 4.9–4.95 km/kWh, showcasing balanced power and range optimization.
 
 #### 3) Which regions have the lowest monthly charging cost per 1,000 km driven?
@@ -91,6 +96,8 @@ FROM cost_normalized
 GROUP BY Region
 ORDER BY AVG_cost_per_1000km ASC;
 ```
+![image alt]()
+
 This query compares the average cost of operating EVs per 1,000 km across different regions.
 Australia shows the lowest cost (≈3.28 units), suggesting cheaper electricity rates or higher charging efficiency.
 Europe (3.36) and Asia (3.42) record slightly higher costs, possibly due to differences in grid energy pricing and charging infrastructure.
@@ -107,6 +114,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY cycle_bin
 ORDER BY cycle_bin;
 ```
+![image alt]()
+
 This output analyzes battery degradation trends across different vehicle types over charge cycles.
 Up to 700 cycles, battery health remains stable (~85–86%), after which a gradual decline is visible.
 Commercial EVs show slightly higher degradation due to more intensive usage.
@@ -126,6 +135,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make, Model
 ORDER BY avg_resale_value_usd DESC;
 ```
+![image alt]()
+
 This table identifies models with high resale value and battery retention.
 BMW i4 ($23,530) has the highest resale value, supported by strong battery performance (85.4%).
 Tesla Model S offers balanced results—slightly lower resale value but excellent battery health (85.9%).
@@ -141,6 +152,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY make 
 ORDER BY Co2_savings_per_1000_maintenance DESC;
 ```
+![image alt]()
+
 This analysis links maintenance efficiency with environmental impact.
 Hyundai leads with 21.45 tons of CO₂ saved, followed by Nissan (20.11) and Volkswagen (19.79).
 This suggests their EVs combine durable components with reduced maintenance emissions.
@@ -162,6 +175,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY vehicle_type
 ORDER BY speed_energy_corr DESC;
 ```
+![image alt]()
+
 This output measures how vehicle speed correlates with energy consumption.
 Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally.
 Trucks also show weak positive correlation due to heavier loads.
@@ -180,6 +195,8 @@ GROUP BY make, model
 ORDER BY charging_performace ASC
 LIMIT 10;
 ```
+![image alt]()
+
 This analysis identifies models with the most efficient charging-to-range ratio.
 Tesla Model Y (0.01265) and Model 3 (0.01401) lead the ranking, reflecting Tesla’s superior fast-charging technology.
 BMW i3 (0.01408) and Kia EV6 (0.01481) also perform efficiently.
@@ -200,6 +217,8 @@ vehicle_type,cost_per_maxspeed, cost_per_acceleration
 FROM vehicle_type
 ORDER BY cost_per_maxspeed DESC, cost_per_acceleration DESC; 
 ```
+![image alt]()
+
 This query evaluates performance cost-efficiency among vehicle categories.
 Sedans provide the best value, with the lowest cost per max speed (7.95) and acceleration (239.78).
 Trucks and Hatchbacks show higher cost values, reflecting greater power requirements for speed and torque.
@@ -220,6 +239,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY region,reg_temperature
 ORDER BY region, reg_temperature;
 ```
+![image alt]()
+
 This output examines how environmental temperature affects EV battery range in different regions.
 North America records the highest average range (~392 km) in cold climates, likely due to better thermal management systems.
 Europe maintains steady performance across climates (~377–378 km).
