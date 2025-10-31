@@ -46,6 +46,7 @@ GROUP BY Make
 ORDER BY avg_battery_health DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture2.png)
+
 Tesla ranks highest with an average battery health of 85.95%, outperforming all other brands. Ford (85.3%) and BMW (85.27%) follow closely, indicating competitive battery management systems. This metric represents how well EV batteries retain their capacity over time, a key indicator of efficiency and reliability.
 
 
@@ -56,7 +57,8 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY avg_charging_time_hr ASC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture3.png)
+
 Tesla again leads with the fastest charging time (1.09 hours), showing high efficiency in energy transfer and optimized charging infrastructure. Nissan (1.15 hrs) and Audi (1.16 hrs) also perform well, while Kia (1.30 hrs) ranks lowest. Lower charging times improve user convenience and support wider EV adoption.
 
 Total CO₂ Saved (tons)
