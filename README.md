@@ -34,7 +34,7 @@ FROM rizdb.electric_vehicle_analytics
 GROUP BY Make 
 ORDER BY total_vehicles DESC;
 ```
-![image alt]()
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture1.png)
 
 This table shows the total number of EVs sold by each manufacturer. Ford leads with 323 vehicles, followed closely by BMW (311) and Volkswagen (308). This suggests strong brand penetration and consumer trust in Ford’s EV lineup. High sales volumes also reflect broader dealership networks, competitive pricing, and effective marketing strategies.
 
