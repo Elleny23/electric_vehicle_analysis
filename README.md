@@ -85,25 +85,10 @@ ORDER BY battery_efficiency_km_per_kwh DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture5.png)
 
-The Hyundai Kona Electric ranks first with a battery efficiency of 5.05 km/kWh, making it the most energy-efficient model in this dataset. Other top performers include Audi e-tron (5.04 km/kWh) and Ford Mustang Mach-E (5.03 km/kWh). Tesla’s models maintain consistent performance around 4.9–4.95 km/kWh, showcasing balanced power and range optimization.
+This table shows which electric vehicles are most battery efficient that is how far a vehicle can go per 1 kWh of energy stored. Hyundai Kona Electric ranks first with a battery efficiency of 5.05 km/kWh, making it the most energy efficient model in this dataset. Other top performers include Audi e-tron (5.04 km/kWh) and Ford Mustang Mach-E (5.03 km/kWh). Tesla’s models maintain consistent performance around 4.9–4.95 km/kWh, showcasing balanced power and range optimization.
 
-#### 3) Which regions have the lowest monthly charging cost per 1,000 km driven?
-```
-WITH cost_normalized AS (SELECT 
-Region,(Monthly_Charging_Cost_USD / NULLIF(Mileage_km, 0)) * 1000 AS cost_per_1000km
-FROM rizdb.electric_vehicle_analytics)
-SELECT 
-Region,
-AVG(cost_per_1000km) AS AVG_cost_per_1000km
-FROM cost_normalized
-GROUP BY Region
-ORDER BY AVG_cost_per_1000km ASC;
-```
-![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture6.png)
 
-This table compares the average monthly charging cost of operating EVs per 1,000 km across different regions. Australia shows the lowest cost (3.28 units), suggesting cheaper electricity rates or higher charging efficiency. Europe (3.36) and Asia (3.42) record slightly higher costs, possibly due to differences in grid energy pricing and charging infrastructure. EV operating costs remain fairly consistent globally, but regions with renewable power and better infrastructure, like Australia, achieve lower per kilometer costs.
-
-#### 4) How does average battery health (%) change with number of charge cycles across usage types (Personal vs. Commercial)?
+#### 3) How does average battery health (%) change with number of charge cycles across usage types (Personal vs. Commercial)?
 ```
 SELECT 
     FLOOR(charge_cycles/100)*100 AS cycle_bin,
@@ -117,6 +102,20 @@ ORDER BY cycle_bin;
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture7.png)
 
 This output analyzes battery degradation trends across different vehicle types over charge cycles. Up to 700 cycles, battery health remains stable (85–86%), after which a gradual decline is visible. Commercial EVs show slightly higher degradation due to more intensive usage. Personal EVs maintain steadier performance, while fleet batteries exhibit wider fluctuations from shared or long duration charging. Battery health declines moderately after 1,000 cycles, highlighting the need for balanced charging practices and efficient energy management systems.
+
+
+#### 4) Which manufacturer provides the highest CO₂ savings per $1,000 spent on maintenance?
+```
+SELECT make, 
+AVG((co2_saved_tons / NULLIF(maintenance_cost_usd, 0 )) * 1000) AS Co2_savings_per_1000_maintenance
+FROM rizdb.electric_vehicle_analytics
+GROUP BY make 
+ORDER BY Co2_savings_per_1000_maintenance DESC;
+```
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture9.png)
+
+This shows how much Co2 is saved per $1,000 spent on maintenance by the manufactures. as can be seen Hyundai leads with 21.45 tons of CO₂ saved, followed by Nissan (20.11) and Volkswagen (19.79). This suggests their EVs combine durable components with reduced maintenance emissions. Luxury brands (Audi, Mercedes) show lower CO₂ savings, possibly due to heavier vehicle weight and energy intensive parts. While Hyundai and Nissan demonstrate strong environmental efficiency, by reducing carbon footprint through optimized maintenance and energy systems.
+
 
 #### 5) Rank vehicles by resale value relative to total mileage and battery health. Which usage factors explain the highest resale value?
 ```
@@ -134,24 +133,25 @@ ORDER BY avg_resale_value_usd DESC;
 
 This table identifies models with high resale value and battery retention. BMW i4 ($23,530) has the highest resale value, supported by strong battery performance (85.4%). Audi ($23,095) and Mercedes ($23,016) have higher resale value but slighty lower battery performance on the other hand Tesla Model S offers slightly lower resale value ($23,098) but excellent battery health (85.9%). Hyundai Ioniq 5 and Kia Niro EV demonstrate reliability with good mileage and stable battery metrics. However premium EVs like BMW,Audi, Mercedes and Tesla maintain high resale retention due to improved battery technology and consumer trust in brand performance.
 
-#### 6) Which manufacturer provides the highest CO₂ savings per $1,000 spent on maintenance?
-```
-SELECT make, 
-AVG((co2_saved_tons / NULLIF(maintenance_cost_usd, 0 )) * 1000) AS Co2_savings_per_1000_maintenance
-FROM rizdb.electric_vehicle_analytics
-GROUP BY make 
-ORDER BY Co2_savings_per_1000_maintenance DESC;
-```
-![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture9.png)
 
-This analysis links maintenance efficiency with environmental impact.
-Hyundai leads with 21.45 tons of CO₂ saved, followed by Nissan (20.11) and Volkswagen (19.79).
-This suggests their EVs combine durable components with reduced maintenance emissions.
-Luxury brands (Audi, Mercedes) show lower CO₂ savings, possibly due to heavier vehicle weight and energy-intensive parts.
-Analyst Note:
-Hyundai and Nissan demonstrate strong environmental efficiency, reducing carbon footprint through optimized maintenance and energy systems.
+#### 6) Which regions have the lowest monthly charging cost per 1,000 km driven?
+```
+WITH cost_normalized AS (SELECT 
+Region,(Monthly_Charging_Cost_USD / NULLIF(Mileage_km, 0)) * 1000 AS cost_per_1000km
+FROM rizdb.electric_vehicle_analytics)
+SELECT 
+Region,
+AVG(cost_per_1000km) AS AVG_cost_per_1000km
+FROM cost_normalized
+GROUP BY Region
+ORDER BY AVG_cost_per_1000km ASC;
+```
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture6.png)
 
-#### 7) Do higher max-speed vehicles tend to consume more energy (kWh/100km)? Find the correlation grouped by vehicle type.
+This table compares the average monthly charging cost of operating EVs per 1,000 km across different regions. Australia shows the lowest cost (3.28 units), suggesting cheaper electricity rates or higher charging efficiency. Europe (3.36) and Asia (3.42) record slightly higher costs, possibly due to differences in grid energy pricing and charging infrastructure. EV operating costs remain fairly consistent globally, but regions with renewable power and better infrastructure, like Australia, achieve lower per kilometer costs.
+
+
+#### 7) Do higher max speed vehicles tend to consume more energy (kWh/100km)? Find the correlation grouped by vehicle type.
 ```
 SELECT 
     vehicle_type,
@@ -167,12 +167,8 @@ ORDER BY speed_energy_corr DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture10.png)
 
-This output measures how vehicle speed correlates with energy consumption.
-Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally.
-Trucks also show weak positive correlation due to heavier loads.
-Sedans and SUVs exhibit negative correlations, suggesting better energy optimization at moderate speeds.
-Analyst Note:
-The weak correlations indicate that EV energy efficiency depends more on aerodynamics and driving patterns than on speed alone.
+This table shows whether vehicles with higher max speed tend to consume more energy, this is to check if vehicle speed correlates with energy consumption.
+Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally. Trucks also show weak positive correlation due to heavier loads. Sedans and SUVs exhibit negative correlations, suggesting better energy optimization at moderate speeds. The weak correlations indicate that EV energy efficiency depends more on driving patterns and other factors than on speed alone.
 
 #### 8) Which models achieve the fastest charging time relative to their charging power (kWh per hour)?
 ```
@@ -194,7 +190,26 @@ Models like Audi Q4 e-tron and Hyundai Kona Electric deliver consistent but slig
 Analyst Note:
 Tesla’s charging systems remain industry benchmarks, combining fast-charging capability with effective range output.
 
-#### 9) Which vehicle types have the highest insurance cost relative to max speed and acceleration?
+
+#### 9) How does average regional temperature affect battery range (km)?
+```
+SELECT region,
+CASE
+WHEN temperature_c < 10 THEN 'Cold'
+WHEN temperature_c BETWEEN 10 AND 25 THEN 'Moderate'
+ELSE 'Hot'
+END AS reg_temperature,
+AVG(range_km) AS battery_range_km
+FROM rizdb.electric_vehicle_analytics 
+GROUP BY region,reg_temperature
+ORDER BY region, reg_temperature;
+```
+![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture13.png)
+
+This output examines how environmental temperature affects EV battery range in different regions. North America records the highest average range (~392 km) in cold climates, likely due to better thermal management systems. Europe maintains steady performance across climates (~377–378 km). Asia and Australia show more variation, indicating greater sensitivity to heat and temperature fluctuations. This means that temperature plays a critical role in EV performance, vehicles in temperate or well cooled environments achieve greater driving range.
+
+
+#### 10) Which vehicle types have the highest insurance cost relative to max speed and acceleration?
 ```
 WITH vehicle_type AS (SELECT
 vehicle_type,
@@ -215,25 +230,3 @@ Trucks and Hatchbacks show higher cost values, reflecting greater power requirem
 Analyst Note:
 Sedans strike the best cost-performance balance, making them ideal for users seeking efficiency and performance at lower operational costs.
 
-
-#### 10) How does average regional temperature affect battery range (km)?
-```
-SELECT region,
-CASE
-WHEN temperature_c < 10 THEN 'Cold'
-WHEN temperature_c BETWEEN 10 AND 25 THEN 'Moderate'
-ELSE 'Hot'
-END AS reg_temperature,
-AVG(range_km) AS battery_range_km
-FROM rizdb.electric_vehicle_analytics 
-GROUP BY region,reg_temperature
-ORDER BY region, reg_temperature;
-```
-![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture13.png)
-
-This output examines how environmental temperature affects EV battery range in different regions.
-North America records the highest average range (~392 km) in cold climates, likely due to better thermal management systems.
-Europe maintains steady performance across climates (~377–378 km).
-Asia and Australia show more variation, indicating greater sensitivity to heat and temperature fluctuations.
-Analyst Note:
-Temperature plays a critical role in EV performance; vehicles in temperate or well-cooled environments achieve greater driving range.
