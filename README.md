@@ -26,7 +26,8 @@ With the global shift toward sustainable mobility, electric vehicles (EVs) have 
 
 #### 1) What are the Key Performance Indicators obtained from the Dataset?
 
-Most Sold EV Company (by Vehicle Count)
+
+- Most Sold EV Company (by Vehicle Count)
 ```
 SELECT 
 Make, COUNT(Vehicle_ID) AS total_vehicles 
@@ -38,7 +39,8 @@ ORDER BY total_vehicles DESC;
 
 This shows the total number of EVs sold by each manufacturer. Ford leads with 323 vehicles, followed closely by BMW (311) and Volkswagen (308). This suggests strong brand penetration and consumer trust in Ford’s EV lineup. High sales volumes also reflect broader dealership networks, competitive pricing, and effective marketing strategies.
 
-Average Battery Health (%)
+
+- Average Battery Health (%)
 ```
 SELECT Make, ROUND(AVG(`Battery_Health_%`),2) AS avg_battery_health 
 FROM rizdb.electric_vehicle_analytics 
@@ -50,7 +52,7 @@ ORDER BY avg_battery_health DESC;
 Tesla ranks highest with an average battery health of 85.95%, outperforming all other brands. Ford (85.3%) and BMW (85.27%) follow closely, indicating competitive battery management systems. This metric represents how well EV batteries retain their capacity over time, a key indicator of efficiency and reliability.
 
 
-Average Charging Time (hours)
+- Average Charging Time (hours)
 ```
 SELECT Make, ROUND(AVG(Charging_Time_hr), 5) AS avg_charging_time_hr 
 FROM rizdb.electric_vehicle_analytics 
@@ -61,7 +63,8 @@ ORDER BY avg_charging_time_hr ASC;
 
 Tesla again leads with the fastest charging time (1.09 hours), showing high efficiency in energy transfer and optimized charging infrastructure. Nissan (1.15 hrs) and Audi (1.16 hrs) also perform well, while Kia (1.30 hrs) ranks lowest. Lower charging times improve user convenience and support wider EV adoption.
 
-Total CO₂ Saved (tons)
+
+- Total CO₂ Saved (tons)
 ```
 SELECT Make, ROUND(SUM(CO2_Saved_tons), 2) AS total_co2_saved_tons 
 FROM rizdb.electric_vehicle_analytics 
@@ -167,8 +170,8 @@ ORDER BY speed_energy_corr DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture10.png)
 
-This table shows whether vehicles with higher max speed tend to consume more energy, this is to check if vehicle speed correlates with energy consumption.
-Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally. Trucks also show weak positive correlation due to heavier loads. Sedans and SUVs exhibit negative correlations, suggesting better energy optimization at moderate speeds. The weak correlations indicate that EV energy efficiency depends more on driving patterns and other factors than on speed alone.
+This table shows whether vehicles with higher max speed tend to consume more energy, this is to check if vehicle speed correlates with energy consumption. As can be seen Hatchbacks (0.06) show a slight positive correlation, meaning higher speeds increase energy use marginally. Trucks also show weak positive correlation due to heavier loads. Sedans and SUVs exhibit negative correlations, suggesting better energy optimization at moderate speeds. The weak correlations indicate that EV energy efficiency depends more on driving patterns and other factors than on speed alone.
+
 
 #### 8) Which models achieve the fastest charging time relative to their charging power (kWh per hour)?
 ```
@@ -183,12 +186,7 @@ LIMIT 10;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture11.png)
 
-This analysis identifies models with the most efficient charging-to-range ratio.
-Tesla Model Y (0.01265) and Model 3 (0.01401) lead the ranking, reflecting Tesla’s superior fast-charging technology.
-BMW i3 (0.01408) and Kia EV6 (0.01481) also perform efficiently.
-Models like Audi Q4 e-tron and Hyundai Kona Electric deliver consistent but slightly slower performance.
-Analyst Note:
-Tesla’s charging systems remain industry benchmarks, combining fast-charging capability with effective range output.
+This query identifies which electric vehicle (EV) models charge the fastest relative to their battery power. In simple words it representes how many hours of charging are needed by the vehicle per 1 kWh of battery capacity. Tesla Model Y (0.01265) and Model 3 (0.01401) are at the top reflecting Tesla’s fast charging technology. BMW i3 (0.01408) and Kia EV6 (0.01481) also perform efficiently. These models require fewer hours per kWh, meaning they can recharge faster compared to their battery size. However models like Audi Q4 e-tron and Hyundai Kona Electric deliver consistent but slightly slower performance. Tesla’s charging systems remain industry benchmarks, combining fast-charging capability with effective range output. Overall, this analysis highlights an important metric for users when comparing vehicle charging performance in real world conditions.
 
 
 #### 9) How does average regional temperature affect battery range (km)?
@@ -224,9 +222,4 @@ ORDER BY cost_per_maxspeed DESC, cost_per_acceleration DESC;
 ```
 ![image alt](https://github.com/Elleny23/electric_vehicle_analysis/blob/main/Picture12.png)
 
-This query evaluates performance cost-efficiency among vehicle categories.
-Sedans provide the best value, with the lowest cost per max speed (7.95) and acceleration (239.78).
-Trucks and Hatchbacks show higher cost values, reflecting greater power requirements for speed and torque.
-Analyst Note:
-Sedans strike the best cost-performance balance, making them ideal for users seeking efficiency and performance at lower operational costs.
-
+This analysis compares insurance costs across vehicle types relative to their performance, measured through maximum speed and acceleration. By calculating the insurance cost per unit of speed and per unit of acceleration, the results show that Sedans offer the best value, with the lowest insurance cost per max speed (7.95) and acceleration (239.78). Trucks, on the other hand, have the highest cost ratios, indicating that their size and performance characteristics carry greater insurance risk. Overall, high performing or heavier vehicle types like trucks and SUVs tend to have higher insurance burdens compared to lighter passenger vehicles such as sedans, making them ideal for users seeking efficiency and performance at lower operational costs.
