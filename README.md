@@ -17,8 +17,9 @@ With the global shift toward sustainable mobility, electric vehicles (EVs) have 
 - [Dataset used](#dataset)
 - [SQL Analysis_code](#sql_analysis_code)
 - [Power BI Dashboard-click to interact](#power_bi_dashboard)
+- [Power BI Dashboard pdf-click to view](#power_bi_dashboard)
 - [README.md](#readme.md)
-- [PPT](#ppt_file)
+
   
 
 ## Execution
